@@ -20,7 +20,7 @@ init = 0
 -- Update
 
 type Message =
-      Increment | Double
+      Increment | Double | Reset
       
 
 update : Message -> Model -> Model
@@ -30,6 +30,8 @@ update msg model =
             model + 1
       Double ->
             model * 2
+      Reset -> 
+          0
 
 -- If statement
 
@@ -50,6 +52,7 @@ view counter =
             button [] [ text "Down" ],
       div [] [ text (String.fromFloat counter)],
             button [ onClick Increment ] [ text "Up" ],
-             button [ onClick Double ] [ text "Double" ],
+            button [ onClick Double ] [ text "Double" ],
+            button [ onClick Reset ] [ text "Reset" ],
       div [] [ text (checkNumber counter) ]
       ]
